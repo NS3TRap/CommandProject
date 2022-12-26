@@ -7,12 +7,12 @@ using namespace std;
 class Client
 {
 private:
-    Fio fio;
+    Fio* fio;
     string phone;
 public:
-    Client(Fio prtFio,string ph): fio(prtFio), phone(ph) {}
+    Client(Fio* prtFio,string ph): fio(prtFio), phone(ph) {}
     ~Client() {}
-    Fio getFio();
+    Fio* getFio();
     string getPhone();
 };
 
@@ -21,7 +21,7 @@ private:
     list<Client*> ptrClientList;
     list<Client*>::iterator iter;
 public:
-    ~ListOfClients() {}
+    ~ListOfClients();
     void addClient(Client*);
     void getListClients();
 };
@@ -29,7 +29,7 @@ public:
 class ClientEntryScreen{
 private:
     ListOfClients* ptrListOfClients;
-    Fio fio;
+    Fio* fio;
     string phone;
 public:
     ClientEntryScreen(ListOfClients* ptrLOC): ptrListOfClients(ptrLOC){}

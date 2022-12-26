@@ -24,4 +24,16 @@ public:
     string getStatusName();
 };
 
+class ListOfOrders
+{
+private:
+    list<Order*> ptrOrdersList;
+    list<Order*>::iterator iter;
+public:
+    ~ListOfOrders();
+    void addNewOrders();
+    void changeStatusName();
+    void getOrdersList();
+};
+
 #endif // ORDERS_H

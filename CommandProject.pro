@@ -5,9 +5,11 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     clients.cpp \
-    other.cpp
+    other.cpp \
+    expenses.cpp
 
 HEADERS += \
     clients.h \
     typefio.h \
-    other.h
+    other.h \
+    expenses.h

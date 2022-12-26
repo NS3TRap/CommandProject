@@ -31,7 +31,7 @@ private:
     ListOfClients* ptrListOfClients;
     Fio fio;
     string phone;
-private:
+public:
     ClientEntryScreen(ListOfClients* ptrLOC): ptrListOfClients(ptrLOC){}
     void addNewClient();
 };

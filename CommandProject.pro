@@ -6,10 +6,12 @@ CONFIG -= qt
 SOURCES += main.cpp \
     clients.cpp \
     other.cpp \
-    expenses.cpp
+    expenses.cpp \
+    orders.cpp
 
 HEADERS += \
     clients.h \
     typefio.h \
     other.h \
-    expenses.h
+    expenses.h \
+    orders.h

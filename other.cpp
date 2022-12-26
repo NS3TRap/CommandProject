@@ -27,9 +27,9 @@ void UserInterfaceScreen::interact(){
             ch = getch();
             switch (ch) {
             case 'c':
-                //ptrCES = new ClientEntryScreen(ptrClientsList);
-               // ptrCES->addNewClient();
-                //delete ptrCES;
+                ptrCES = new ClientEntryScreen(ptrClientsList);
+                ptrCES->addNewClient();
+                delete ptrCES;
                 break;
             case 'o':
                 //ptrOIS = new OrderInteractionScreen(ptrListOfOrders);

@@ -35,7 +35,7 @@ private:
     vector<Expense*>::iterator iter;
 public:
     ~ExpensesRecord() {}
-    void insertExp(in Expense*);
+    void insertExp(Expense*);
     void getExpensesRecord();
     float displaySummary();
 };
@@ -43,9 +43,9 @@ public:
 class ExpenseEntryScreen
 {
 private:
-    ExpenseRecord* ptrExpenseRecord;
+    ExpensesRecord* ptrExpenseRecord;
 public:
-    ExpenseEntryScreen(ExpenseRecord* ptrER) : ptrExpenseRecord(ptrER);
+    ExpenseEntryScreen(ExpensesRecord* ptrER) : ptrExpenseRecord(ptrER) {}
     void addNewExpenses();
 };
 

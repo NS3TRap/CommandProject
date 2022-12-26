@@ -36,4 +36,14 @@ public:
     void getOrdersList();
 };
 
+class OrderInteractionScreen
+{
+private:
+    ListOfOrders* ptrListOfOrders;
+public:
+    OrderInteractionScreen(ListOfOrders* ptrLOO) : ptrListOfOrders(ptrLOO) {}
+    ~OrderInteractionScreen();
+    void addNewOrder();
+    void changeOrder();
+};
 #endif // ORDERS_H

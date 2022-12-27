@@ -4,24 +4,26 @@
 #include <iostream>
 #include <list>
 #include "typefio.h"
+#include "clients.h"
 using namespace std;
 
 class Order
 {
 private:
     string taskName;
-    Fio fio;
+    Fio* fio;
     string car;
     float cost;
     string statusName;
 public:
-    Order(string tn, Fio name, string car, float cost, string sn): taskName(tn), fio(name), car(car), cost(cost), statusName(sn) {}
-    ~Order();
+    Order(string tn, Fio* name, string car, float cost, string sn): taskName(tn), fio(name), car(car), cost(cost), statusName(sn) {}
+    ~Order() {}
     string getTaskName();
-    Fio getFio();
+    Fio* getFio();
     string getCar();
     float getCost();
     string getStatusName();
+    void changeStatusName(string);
 };
 
 class ListOfOrders
@@ -31,18 +33,26 @@ private:
     list<Order*>::iterator iter;
 public:
     ~ListOfOrders();
-    void addNewOrders();
-    void changeStatusName();
-    void getOrdersList();
+    void addNewOrders(Order*);
+    void changeStatusName(Order*, string);
+    float getSumOrders();
+    void display();
+    Order* findOrders(string, Fio* , string , float );
 };
 
 class OrderInteractionScreen
 {
 private:
     ListOfOrders* ptrListOfOrders;
+    ListOfClients* ptrListOfClients;
+    string taskName;
+    Fio* fio;
+    string car;
+    float cost;
+    string statusName;
 public:
-    OrderInteractionScreen(ListOfOrders* ptrLOO) : ptrListOfOrders(ptrLOO) {}
-    ~OrderInteractionScreen();
+    OrderInteractionScreen(ListOfOrders* ptrLOO,ListOfClients* ptrLOC) : ptrListOfOrders(ptrLOO), ptrListOfClients(ptrLOC) {}
+    ~OrderInteractionScreen() {}
     void addNewOrder();
     void changeOrder();
 };

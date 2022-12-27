@@ -55,3 +55,21 @@ void ExpensesRecord::getExpensesRecord(){
     cout << endl;
     }
 }
+
+float ExpensesRecord::displaySummary(){
+    float totalExpenses = 0; // Сумма по всем категориям расходов
+    if (vectPtrsExpenses.size() == 0)
+    {
+        cout << "\tAll categories\t0\n";
+        return 0;
+    }
+    iter = vectPtrsExpenses.begin();
+    while (iter != vectPtrsExpenses.end())
+    {
+        //выводим на экран категории расходов
+        cout << '\t' << ((*iter)->getCategory()) << '\t' << ((*iter)->getAmount()) << endl;
+        totalExpenses += (*iter)->getAmount(); //подсчитываем все расходы
+        iter++;
+    }
+    return totalExpenses;
+}

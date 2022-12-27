@@ -73,3 +73,31 @@ float ExpensesRecord::displaySummary(){
     }
     return totalExpenses;
 }
+
+void ExpenseEntryScreen::addNewExpenses(){
+    date = new Date;
+    string category, payee;
+    float amount;
+
+    system("cls");
+    cout << "Enter month (1-12): ";
+    cin >> date->month;
+    cin.ignore(80, '\n');
+    cout << "Enter the day (1-31): ";
+    cin >> date->day;
+    cin.ignore(80, '\n');
+    cout << "Enter year: ";
+    cin >> date->year;
+    cin.ignore(80, '\n');
+    cout << "Enter an expense category (Repair, Taxes): ";
+    cin >> category;
+    cout << "Enter recipient (ProstokvashinoElectroSbyt): ";
+    cin >> payee;
+    cout << "Enter amount (39.95): ";
+    cin >> amount;
+    cin.ignore(80, '\n');
+    // создаем новый расход
+    Expense* ptrExpense = new Expense(date, category, payee, amount);
+    // вставляем расход в список всех расходов
+     ptrExpenseRecord->insertExp(ptrExpense);
+}

@@ -1,8 +1,11 @@
 #include <iostream>
+#include "other.h"
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
+    UserInterfaceScreen* UIS = new UserInterfaceScreen();
+    UIS->interact();
     return 0;
 }

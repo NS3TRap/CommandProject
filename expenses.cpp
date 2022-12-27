@@ -19,3 +19,17 @@ string Expense::getPayee(){
 float Expense::getAmount(){
     return amount;
 }
+
+ExpensesRecord::~ExpensesRecord() {
+    // удалить указатели на вектор
+    while (!vectPtrsExpenses.empty())
+    {
+        iter = vectPtrsExpenses.begin();
+        delete *iter;
+        vectPtrsExpenses.erase(iter);
+    }
+}
+
+void ExpensesRecord::insertExp(Expense* ptrExpense){
+    vectPtrsExpenses.push_back(ptrExpense);
+}

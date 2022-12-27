@@ -93,7 +93,7 @@ void ListOfOrders::display(){
         iter = ptrOrdersList.begin();
         while (iter != ptrOrdersList.end())
         {
-            cout << (*iter)->getNumberOrder() << "\t" << "||" <<
+            cout << (*iter)->getNumberOrder() << "   " << "||" <<
                     (*iter)->getTaskName() << "\t" << "||" <<
                     (*iter)->getFio()->fname << " "<<
                     (*iter)->getFio()->lname << " "<<

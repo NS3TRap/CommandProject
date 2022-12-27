@@ -24,6 +24,7 @@ public:
     ~ListOfClients();
     void addClient(Client*);
     void getListClients();
+    bool findClientByFio(Fio*);
 };
 
 class ClientEntryScreen{

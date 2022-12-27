@@ -8,18 +8,18 @@ using namespace std;
 UserInterfaceScreen::UserInterfaceScreen(){
     ptrClientsList = new ListOfClients;
     //ptrListOfOrders = new ListOfOrders;
-    ptrExpensesRecord = new ExpensesRecord;
+    //ptrExpensesRecord = new ExpensesRecord;
 }
 
 UserInterfaceScreen::~UserInterfaceScreen(){
     delete ptrClientsList;
     //delete ptrListOfOrders;
-    delete ptrExpensesRecord;
+    //delete ptrExpensesRecord;
 }
 
 void UserInterfaceScreen::interact(){
     while (true) {
-        cout << "Enter the required menu item:\ni - Data input;\np - Report Output;\nq - Exit" << endl;
+        cout << "Enter the required menu item:\ni - Data input;\no - Data output\np - Report Output;\nq - Exit" << endl;
         ch = getch();
         if(ch == 'i'){
             system("cls");
@@ -32,7 +32,7 @@ void UserInterfaceScreen::interact(){
                 delete ptrCES;
                 break;
             case 'o':
-                //ptrOIS = new OrderInteractionScreen(ptrListOfOrders);
+                //ptrOIS = new OrderInteractionScreen(ptrListOfOrders,ptrClientsList);
                 cout << "Enter the required menu item:\na - Add order;\nc - Change order status;\nAny key- Back;\n";
                 ch = getch();
                 if(ch == 'a'){
@@ -56,7 +56,33 @@ void UserInterfaceScreen::interact(){
                 break;
             }
         }
-        else if(ch == 'p'){
+        else if(ch == 'o'){
+            system("cls");
+            cout << "Enter the required menu item:\nc - Display a list of clients;\n"<<
+                    "o - Display a list of orders;\ne - Output list of expenses;\nq - Back;\n";
+            ch = getch();
+            switch (ch) {
+            case 'c':
+                ptrClientsList->getListClients();
+                system("pause");
+                break;
+            case 'o':
+                //ptrListOfOrders->display();
+                system("pause");
+                break;
+            case 'e':
+                //ptrExpensesRecord->getExpensesRecord();
+                system("pause");
+                break;
+            case 'q':
+                break;
+            default:
+                system("cls");
+                cout << "Unknown operation" << endl;
+                system("pause");
+                break;
+            }
+        }else if(ch == 'p'){
 
         }else if(ch == 'q'){
             break;

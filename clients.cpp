@@ -11,8 +11,8 @@ string Client::getPhone(){
 }
 
 ListOfClients::~ListOfClients(){
-    while (!ptrClientList.empty()) // удаление всех жильцов,
-    {                              // удаление указателей из контейнера
+    while (!ptrClientList.empty())
+    {
         iter = ptrClientList.begin();
         delete *iter;
         ptrClientList.erase(iter);
@@ -26,12 +26,12 @@ void ListOfClients::addClient(Client* ptrClient){
 void ListOfClients::getListClients(){
     system("cls");
     cout << "\nFirst Name  \t||Second Name   \t||Patronymic  \t||Phone\n-------------------------------------------------------------------------\n";
-    if (ptrClientList.empty()) // если список жильцов пуст
-        cout << "***The list is empty***\n" << endl; // выводим запись, что он пуст)
+    if (ptrClientList.empty())
+        cout << "***The list is empty***\n" << endl;
     else
     {
         iter = ptrClientList.begin();
-        while (iter != ptrClientList.end()) // распечатываем всех жильцов
+        while (iter != ptrClientList.end())
         {
             cout << (*iter)->getFio()->fname << "\t\t" << "||" <<
                     (*iter)->getFio()->lname << "\t\t" << "||" <<
@@ -40,7 +40,21 @@ void ListOfClients::getListClients(){
             *iter++;
         }
     }
+}
 
+bool ListOfClients::findClientByFio(Fio* searchFio){
+    Fio* findFio;
+    iter = ptrClientList.begin();
+    while (iter != ptrClientList.end())
+    {
+    findFio = (*iter)->getFio();
+    if (findFio->fname == searchFio->fname && findFio->sname == searchFio->sname && findFio->lname == searchFio->lname)
+    {
+        return true;
+    }
+    iter++;
+    }
+    return false;
 }
 
 void ClientEntryScreen::addNewClient(){

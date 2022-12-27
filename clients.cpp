@@ -42,13 +42,13 @@ void ListOfClients::getListClients(){
     }
 }
 
-bool ListOfClients::findClientByFio(Fio* searchFio){
+bool ListOfClients::findClientByFio(Fio* searchFio, string searchPhone){
     Fio* findFio;
     iter = ptrClientList.begin();
     while (iter != ptrClientList.end())
     {
     findFio = (*iter)->getFio();
-    if (findFio->fname == searchFio->fname && findFio->sname == searchFio->sname && findFio->lname == searchFio->lname)
+    if (findFio->fname == searchFio->fname && findFio->sname == searchFio->sname && findFio->lname == searchFio->lname && (*iter)->getPhone()==searchPhone)
     {
         return true;
     }
@@ -58,8 +58,7 @@ bool ListOfClients::findClientByFio(Fio* searchFio){
 }
 
 void ClientEntryScreen::addNewClient(){
-    fio = new Fio;
-
+    fio = new Fio;    
     system("cls");
     cout << "Enter customer name:\n";
     cin >> fio->fname;
@@ -69,7 +68,11 @@ void ClientEntryScreen::addNewClient(){
     cin >> fio->sname;
     cout << "Enter customer phone:\n";
     cin >> phone;
-
+    if(!ptrListOfClients->findClientByFio(fio, phone)){
     Client* ptrClient = new Client(fio, phone);
     ptrListOfClients->addClient(ptrClient);
+    }else{
+        cout << "There is such a user!\n";
+        system("pause");
+    }
 }

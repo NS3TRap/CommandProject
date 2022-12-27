@@ -10,13 +10,14 @@ using namespace std;
 class Order
 {
 private:
+    int numberOrder;
     string taskName;
     Fio* fio;
     string car;
     float cost;
     string statusName;
 public:
-    Order(string tn, Fio* name, string car, float cost, string sn): taskName(tn), fio(name), car(car), cost(cost), statusName(sn) {}
+    Order(int no,string tn, Fio* name, string car, float cost, string sn): numberOrder(no),taskName(tn), fio(name), car(car), cost(cost), statusName(sn) {}
     ~Order() {}
     string getTaskName();
     Fio* getFio();
@@ -24,6 +25,7 @@ public:
     float getCost();
     string getStatusName();
     void changeStatusName(string);
+    int getNumberOrder();
 };
 
 class ListOfOrders
@@ -31,13 +33,15 @@ class ListOfOrders
 private:
     list<Order*> ptrOrdersList;
     list<Order*>::iterator iter;
+    list<Order*>::reverse_iterator rIter;
 public:
     ~ListOfOrders();
     void addNewOrders(Order*);
     void changeStatusName(Order*, string);
     float getSumOrders();
     void display();
-    Order* findOrders(string, Fio* , string , float );
+    Order* findOrders(int);
+    int getNewNumberOrder();
 };
 
 class OrderInteractionScreen
@@ -45,6 +49,7 @@ class OrderInteractionScreen
 private:
     ListOfOrders* ptrListOfOrders;
     ListOfClients* ptrListOfClients;
+    int numberOrder;
     string taskName;
     Fio* fio;
     string car;

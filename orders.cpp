@@ -75,7 +75,7 @@ Order* ListOfOrders::findOrders(string taskName, Fio* fio, string car, float cos
 
 void ListOfOrders::display(){
     system("cls");
-    cout << "\nTask name  \t||Fio   \t\t\t||Cost   \t||Status name\n"<<
+    cout << "\nTask name  \t||Fio   \t\t\t||Car \t||Cost\t||Status name\n"<<
             "--------------------------------------------------------------------------------------\n";
     if (ptrOrdersList.empty())
         cout << "***The list is empty***\n" << endl;
@@ -137,9 +137,10 @@ void OrderInteractionScreen::changeOrder(){
     cout << "Enter customer patronymic:\n";
     cin >> fio->sname;
     cout << "Enter the name of the task:\n";
-    cin >> taskName;
+    cin.ignore(80, '\n');
+    getline(cin, taskName);
     cout << "Enter the make of the car:\n";
-    cin >> car;
+    getline(cin, car);
     cout << "Enter price:\n";
     cin >> cost;
     ptrOrder = ptrListOfOrders->findOrders(taskName,fio,car,cost);

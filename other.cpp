@@ -7,14 +7,14 @@ using namespace std;
 
 UserInterfaceScreen::UserInterfaceScreen(){
     ptrClientsList = new ListOfClients;
-    //ptrListOfOrders = new ListOfOrders;
-    //ptrExpensesRecord = new ExpensesRecord;
+    ptrListOfOrders = new ListOfOrders;
+    ptrExpensesRecord = new ExpensesRecord;
 }
 
 UserInterfaceScreen::~UserInterfaceScreen(){
     delete ptrClientsList;
-    //delete ptrListOfOrders;
-    //delete ptrExpensesRecord;
+    delete ptrListOfOrders;
+    delete ptrExpensesRecord;
 }
 
 void UserInterfaceScreen::interact(){
@@ -32,20 +32,20 @@ void UserInterfaceScreen::interact(){
                 delete ptrCES;
                 break;
             case 'o':
-                //ptrOIS = new OrderInteractionScreen(ptrListOfOrders,ptrClientsList);
+                ptrOIS = new OrderInteractionScreen(ptrListOfOrders,ptrClientsList);
                 cout << "Enter the required menu item:\na - Add order;\nc - Change order status;\nAny key- Back;\n";
                 ch = getch();
                 if(ch == 'a'){
-                    //ptrOIS->addNewOrder();
+                    ptrOIS->addNewOrder();
                 }else if(ch == 'c'){
-                    //ptrOIS->changeOrder();
+                    ptrOIS->changeOrder();
                 }
-                //delete ptrOIS;
+                delete ptrOIS;
                 break;
             case 'e':
-                //ptrEES = new ExpenseEntryScreen(ptrExpensesRecord);
-                //ptrEES->addNewExpenses();
-                //delete ptrEES;
+                ptrEES = new ExpenseEntryScreen(ptrExpensesRecord);
+                ptrEES->addNewExpenses();
+                delete ptrEES;
                 break;
             case 'q':
                 break;
@@ -67,11 +67,11 @@ void UserInterfaceScreen::interact(){
                 system("pause");
                 break;
             case 'o':
-                //ptrListOfOrders->display();
+                ptrListOfOrders->display();
                 system("pause");
                 break;
             case 'e':
-                //ptrExpensesRecord->getExpensesRecord();
+                ptrExpensesRecord->getExpensesRecord();
                 system("pause");
                 break;
             case 'q':
@@ -83,7 +83,10 @@ void UserInterfaceScreen::interact(){
                 break;
             }
         }else if(ch == 'p'){
-
+            ptrAnnualReport = new AnnualReport(ptrListOfOrders,ptrExpensesRecord);
+            ptrAnnualReport->display();
+            system("pause");
+            delete ptrAnnualReport;
         }else if(ch == 'q'){
             break;
         }else {
@@ -96,15 +99,16 @@ void UserInterfaceScreen::interact(){
 
 void AnnualReport::display()
 {
-cout << "Annual Report\n--------------\n" << endl;
-cout << "Income\n" << endl;
-cout << "\tIncome from orders (services):\t\t";
-income = ptrListOfOrders->getSumOrders();
-cout << rents << endl;
-cout << "Expenses\n" << endl;
-expense = ptrExpenseRecord->displaySummary();
-cout << "Total expenses:\t\t";
-cout << expenses << endl;
-// вычисляем прибыльность
-cout << "\nBalance:\t\t\t" << (income - expense) << endl;
+    system("cls");
+    cout << "Annual Report\n--------------\n" << endl;
+    cout << "Income\n" << endl;
+    cout << "\tIncome from orders (services):\t\t";
+    income = ptrListOfOrders->getSumOrders();
+    cout << income << endl;
+    cout << "Expenses\n" << endl;
+    expense = ptrExpenseRecord->displaySummary();
+    cout << "Total expenses:\t\t";
+    cout << expense << endl;
+    // вычисляем прибыльность
+    cout << "\nBalance:\t\t\t" << (income - expense) << endl;
 }

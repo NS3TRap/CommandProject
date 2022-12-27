@@ -11,6 +11,7 @@ class AnnualReport
 private:
     ListOfOrders* ptrListOfOrders;
     ExpensesRecord* ptrExpenseRecord;
+    float income, expense;
 public:
     AnnualReport(ListOfOrders* ptrLOO, ExpensesRecord* ptrER): ptrListOfOrders(ptrLOO), ptrExpenseRecord(ptrER) {}
     void display();

@@ -137,9 +137,10 @@ void OrderInteractionScreen::changeOrder(){
     cout << "Enter customer patronymic:\n";
     cin >> fio->sname;
     cout << "Enter the name of the task:\n";
-    cin >> taskName;
+    cin.ignore(80, '\n');
+    getline(cin, taskName);
     cout << "Enter the make of the car:\n";
-    cin >> car;
+    getline(cin, car);
     cout << "Enter price:\n";
     cin >> cost;
     ptrOrder = ptrListOfOrders->findOrders(taskName,fio,car,cost);

@@ -40,7 +40,7 @@ void ExpensesRecord::getExpensesRecord(){
     cout << "\nDate\tAddressee\tAmount\tCategory\n"
     << "----------------------------------------\n" << endl;
     if (vectPtrsExpenses.size() == 0) // В контейнере нет расходов
-        cout << "***Расходов нет***\n" << endl;
+        cout << "***The list is empty***\n" << endl;
     else
     {
         iter = vectPtrsExpenses.begin();

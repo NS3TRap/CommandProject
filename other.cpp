@@ -40,7 +40,7 @@ void UserInterfaceScreen::interact(){
                 }else if(ch == 'c'){
                     ptrOIS->changeOrder();
                 }
-                //delete ptrOIS;
+                delete ptrOIS;
                 break;
             case 'e':
                 ptrEES = new ExpenseEntryScreen(ptrExpensesRecord);

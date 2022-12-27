@@ -75,7 +75,7 @@ Order* ListOfOrders::findOrders(string taskName, Fio* fio, string car, float cos
 
 void ListOfOrders::display(){
     system("cls");
-    cout << "\nTask name  \t||Fio   \t\t\t||Cost   \t||Status name\n"<<
+    cout << "\nTask name  \t||Fio   \t\t\t||Car \t||Cost\t||Status name\n"<<
             "--------------------------------------------------------------------------------------\n";
     if (ptrOrdersList.empty())
         cout << "***The list is empty***\n" << endl;

@@ -93,3 +93,18 @@ void UserInterfaceScreen::interact(){
         system("cls");
     }
 }
+
+void AnnualReport::display()
+{
+cout << "Annual Report\n--------------\n" << endl;
+cout << "Income\n" << endl;
+cout << "\tIncome from orders (services):\t\t";
+income = ptrListOfOrders->getSumOrders();
+cout << rents << endl;
+cout << "Expenses\n" << endl;
+expense = ptrExpenseRecord->displaySummary();
+cout << "Total expenses:\t\t";
+cout << expenses << endl;
+// вычисляем прибыльность
+cout << "\nBalance:\t\t\t" << (income - expense) << endl;
+}
